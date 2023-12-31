@@ -1,0 +1,7 @@
+name = "RollingDedispersion"
+uuid = "de1a5888-936f-4c73-9525-49a60d2dc87e"
+authors = ["Ujjwal Panda <ujjwalpanda97@gmail.com> and contributors"]
+version = "0.0.1"
+
+[compat]
+julia = "1.9"
