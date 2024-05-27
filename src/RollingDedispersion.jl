@@ -2,7 +2,7 @@ module RollingDedispersion
 
 const 𝓓 = 4.1488064239e3
 
-function rolldd!(I′::AbstractMatrix, I::AbstractMatrix; fₕ, Δf, δt, dm)
+function rolldd!(I′::AbstractMatrix, I::AbstractMatrix, fₕ, Δf, δt, dm)
     nf = size(I, 1)
     @inbounds Threads.@threads for i ∈ axes(I, 1)
         f = fₕ - ((i - 1) * Δf / nf)
@@ -11,9 +11,9 @@ function rolldd!(I′::AbstractMatrix, I::AbstractMatrix; fₕ, Δf, δt, dm)
     end
 end
 
-function rolldd(I::AbstractMatrix; fₕ, Δf, δt, dm)
+function rolldd(I::AbstractMatrix, fₕ, Δf, δt, dm)
     I′ = similar(I)
-    rolldd!(I′, I; fₕ, Δf, δt, dm)
+    rolldd!(I′, I, fₕ, Δf, δt, dm)
     I′
 end
 
